@@ -4,4 +4,4 @@ A [PolymerJS](https://www.polymer-project.org) custom element for rendering inte
 
 # documentation
 
-Details and demo can be found at the [Component Page](http://datagovsg.github.io/vega-element)
+Details and demo can be found at the [Component Page](https://datagovsg.github.io/vega-element)

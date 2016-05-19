@@ -1,7 +1,3 @@
-<html><head><link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="./vega.html">
-
-</head><body><script>
 'use strict';
 
 (function (Hiveoss) {
@@ -231,4 +227,3 @@
 
   };
 })(window.Hiveoss = window.Hiveoss || {});
-</script></body></html>

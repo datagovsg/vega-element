@@ -1,0 +1,45 @@
+<html><head><link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../paper-styles/shadow.html">
+
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../neon-animation/neon-animatable-behavior.html">
+
+<link rel="import" href="./vega-behavior.html">
+
+</head><body><dom-module id="vega-element">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+    <style>
+      :host {
+        display: block;
+      }
+      
+      :host.shadow .container{
+        background-color: var(--vega-bgcolor,#fafafa);
+        @apply(--shadow-elevation-2dp);
+      }
+      
+      .container {
+        min-width: 100px;
+        min-height: 100px;
+      }
+    </style>
+    <div class="container">
+      <section class="layout horizontal">
+        <section>
+          <content select=".left"></content>
+        </section>
+        <section class="flex">
+          <content select=".top"></content>
+          <div id="vega"></div>
+          <content select=".bottom"></content>
+        </section>
+        <section>
+          <content select=".right"></content>
+        </section>        
+    <div>
+  </div></section></div></template>
+
+  </dom-module>
+<script src="vega-element.js"></script></body></html>

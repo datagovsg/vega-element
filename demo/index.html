@@ -1,0 +1,39 @@
+<html>
+<head>
+  <link rel="import" href="../vega-element.html">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/webcomponents-lite.min.js"></script>
+  <style>
+    body{
+      padding: 10px;
+      margin: auto;
+      width: 600px;
+    }
+    pre{
+      font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+      margin-bottom: 10px;
+      overflow: auto;
+      width: auto;
+      padding: 5px;
+      background-color: #eee;
+      width: 650px!ie7;
+      padding-bottom: 20px!ie7;
+      max-height: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Stacked Area example</h2>
+  <p>
+    This based on an existing Vega <a href="https://vega.github.io/vega-editor/?mode=vega&spec=stacked_area">example</a>.
+    More details on writing Vega specification JSON can be found in <a href="https://github.com/vega/vega/wiki">https://github.com/vega/vega/wiki</a>.
+  </p>
+  <pre>
+    <code>
+      &lt;vega-element spec="./vega-spec.json" class="shadow"&gt;&lt;/vega-element&gt;
+    </code>
+  </pre>
+
+  <vega-element spec="./vega-spec.json" class="shadow"></vega-element>
+
+</body>
+</html>

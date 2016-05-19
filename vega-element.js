@@ -1,0 +1,1 @@
+"use strict";!function(){Polymer({is:"vega-element",properties:{},behaviors:[Polymer.NeonAnimatableBehavior,Hiveoss.VegaBehavior],observers:["render(_chart)"],render:function(e,r){r=r||this.data,console.log(e);var i=this.$.vega,a=this.renderer;this.view=e({el:i,data:r,renderer:a}).update(),this.loading=!1}})}();

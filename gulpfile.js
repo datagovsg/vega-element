@@ -39,8 +39,7 @@ gulp.task('vulcanize', function () {
 	return gulp.src('./tmp/vega-element/index.html')
 		.pipe(vulcanize({
       inlineScripts: true,
-      inlineCss: true//,
-      //excludes: ['./tmp/vega-element/vega-element.html']
+      inlineCss: true
 		}))
 		.pipe(gulp.dest('./gh_pages/'));
 });
@@ -94,5 +93,5 @@ gulp.task('clean_gh_pages', function() {
 });
 
 gulp.task('default', function(cb) {
-  runSequence(['clean','clean_gh_pages','demo','es5'],['build','html', 'bower'],['vulcanize'],['clean'],cb);
+  runSequence(['clean','clean_gh_pages','demo','es5'],['build','html', 'bower'],['vulcanize','vulcanize2'],['clean'],cb);
 });

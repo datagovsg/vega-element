@@ -81,7 +81,7 @@
        *
        * e.g.
        * ```
-       * <vega-element observer-signals="[[signals]]"
+       * <vega-element observe-signals="[[signals]]"
        *    on-signal="handleSignal"
        *    last-signal="{{lastSignal}}"></vega-element>
        * ```
@@ -106,13 +106,17 @@
        */
       _chart: {
         type: Object
+      },
+      _diff:{
+        type: Object
       }
     },
 
     observers: [
       "parse(spec)",
       "updateSignal(signal,view)",
-      "getData(requestData,view)"
+      "getData(requestData,view)",
+      "_updateSignalListeners(_diff.added,_diff.removed,view)"
     ],
 
 
@@ -160,17 +164,16 @@
 
 
     _observeSignalsChanged: function(val,old){
-      let {added,removed} = this._difference(val,old);
-      console.log(added);
-      console.log(removed);
-      this._updateSignalListeners(added,removed);
+      this._diff = this._difference(val,old);
     },
 
     _difference(currArr, oldArr){
       let map = new Map();
       // set new values to be 1
+      currArr = currArr || [];
       currArr.forEach(d=>map.set(d,1));
       // set existing values to 3, and removed values to be 2
+      oldArr = oldArr || [];
       oldArr.forEach(d=>map.set(d,map.has(d)?3:2));
       // extract into 2 array, new values, and removed values
       let added = [], removed = [];

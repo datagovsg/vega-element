@@ -83,7 +83,7 @@
        *
        * e.g.
        * ```
-       * <vega-element observer-signals="[[signals]]"
+       * <vega-element observe-signals="[[signals]]"
        *    on-signal="handleSignal"
        *    last-signal="{{lastSignal}}"></vega-element>
        * ```
@@ -108,10 +108,13 @@
        */
       _chart: {
         type: Object
+      },
+      _diff: {
+        type: Object
       }
     },
 
-    observers: ["parse(spec)", "updateSignal(signal,view)", "getData(requestData,view)"],
+    observers: ["parse(spec)", "updateSignal(signal,view)", "getData(requestData,view)", "_updateSignalListeners(_diff.added,_diff.removed,view)"],
 
     /*
      * Parse a Vega JSON specification or URL. Updates the **_chart** attribute.  Automatically called when **spec** is updated.
@@ -160,23 +163,18 @@
     },
 
     _observeSignalsChanged: function _observeSignalsChanged(val, old) {
-      var _difference = this._difference(val, old);
-
-      var added = _difference.added;
-      var removed = _difference.removed;
-
-      console.log(added);
-      console.log(removed);
-      this._updateSignalListeners(added, removed);
+      this._diff = this._difference(val, old);
     },
 
     _difference: function _difference(currArr, oldArr) {
       var map = new Map();
       // set new values to be 1
+      currArr = currArr || [];
       currArr.forEach(function (d) {
         return map.set(d, 1);
       });
       // set existing values to 3, and removed values to be 2
+      oldArr = oldArr || [];
       oldArr.forEach(function (d) {
         return map.set(d, map.has(d) ? 3 : 2);
       });

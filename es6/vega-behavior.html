@@ -116,7 +116,8 @@
       "parse(spec)",
       "updateSignal(signal,view)",
       "getData(requestData,view)",
-      "_updateSignalListeners(_diff.added,_diff.removed,view)"
+      "_updateSignalListeners(_diff.added,_diff.removed,view)",
+      '_updateData(view,data)'
     ],
 
 
@@ -162,6 +163,10 @@
       return this.lastData;
     },
 
+    _updateData: function(view,data){
+      if (!view || !data) return;
+      view.data(data).update({duration:800});
+    },
 
     _observeSignalsChanged: function(val,old){
       this._diff = this._difference(val,old);

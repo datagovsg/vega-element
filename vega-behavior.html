@@ -114,7 +114,7 @@
       }
     },
 
-    observers: ["parse(spec)", "updateSignal(signal,view)", "getData(requestData,view)", "_updateSignalListeners(_diff.added,_diff.removed,view)"],
+    observers: ["parse(spec)", "updateSignal(signal,view)", "getData(requestData,view)", "_updateSignalListeners(_diff.added,_diff.removed,view)", '_updateData(view,data)'],
 
     /*
      * Parse a Vega JSON specification or URL. Updates the **_chart** attribute.  Automatically called when **spec** is updated.
@@ -160,6 +160,11 @@
       });
       this.set('lastData', res);
       return this.lastData;
+    },
+
+    _updateData: function _updateData(view, data) {
+      if (!view || !data) return;
+      view.data(data).update({ duration: 800 });
     },
 
     _observeSignalsChanged: function _observeSignalsChanged(val, old) {

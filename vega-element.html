@@ -32097,7 +32097,15 @@ module.exports = dl.extend(u, dl);
       /*
        * An object containing named data sets. The data argument can be used to bind data sets at runtime for dynamic, reusable chart components. Data sets whose names do not match any data definitions in the Vega specification will be ignored.
        *
-       * details: https://github.com/vega/vega/wiki/Runtime
+       * Example data Object
+       * ```
+       * {
+       *  dataName: function(data) { data.insert(someArray); }
+       * }
+       * ```
+       * details:
+       * https://github.com/vega/vega/wiki/Runtime
+       * https://github.com/vega/vega/wiki/Streaming-Data
        */
       data: {
         type: Object

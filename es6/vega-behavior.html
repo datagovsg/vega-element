@@ -100,6 +100,22 @@
         notify: true
       },
       /*
+       * The easing to use for transition.
+       * See d3 v3 easing doc for possible values:
+       * [https://github.com/d3/d3-3.x-api-reference/blob/master/Transitions.md#easing](https://github.com/d3/d3-3.x-api-reference/blob/master/Transitions.md#easing)
+       */
+      ease:{
+        type: String,
+        value: 'in-out'
+      },
+      /*
+       * The duration in milliseconds to use for transition.
+       */
+      duration:{
+        type: Number,
+        value: 300
+      },
+      /*
        * Vega chart object.
        *
        * details: https://github.com/vega/vega/wiki/Runtime
@@ -141,7 +157,7 @@
       if (!view) return;
       var self = this;
       this.loading = true;
-      view.signal(signal.signal,signal.value).update();
+      view.signal(signal.signal,signal.value).update({duration: this.duration, ease: this.ease});
       this.async(function(){self.getData(self.requestData,self.view);},500);
       this.loading = false;
     },
@@ -165,7 +181,7 @@
 
     _updateData: function(view,data){
       if (!view || !data) return;
-      view.data(data).update({duration:800});
+      view.data(data).update({duration: this.duration, ease: this.ease});
     },
 
     _observeSignalsChanged: function(val,old){

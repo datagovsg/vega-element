@@ -1,5 +1,5 @@
 <html><head><link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="./vega.html">
+<link rel="import" href="../hiveoss-common-libraries/vega.html">
 
 </head><body><script>
 'use strict';
@@ -42,7 +42,15 @@
       /*
        * An object containing named data sets. The data argument can be used to bind data sets at runtime for dynamic, reusable chart components. Data sets whose names do not match any data definitions in the Vega specification will be ignored.
        *
-       * details: https://github.com/vega/vega/wiki/Runtime
+       * Example data Object
+       * ```
+       * {
+       *  dataName: function(data) { data.insert(someArray); }
+       * }
+       * ```
+       * details:
+       * https://github.com/vega/vega/wiki/Runtime
+       * https://github.com/vega/vega/wiki/Streaming-Data
        */
       data: {
         type: Object

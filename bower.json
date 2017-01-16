@@ -10,6 +10,7 @@
     "polymer",
     "polymerjs",
     "webcomponent",
+    "web-components",
     "vega",
     "d3",
     "visualization",
